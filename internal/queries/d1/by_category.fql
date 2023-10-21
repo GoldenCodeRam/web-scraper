@@ -1,0 +1,11 @@
+LET document = DOCUMENT('https://domicilios.tiendasd1.com/')
+
+WAIT_ELEMENT(document, 'div.grid-content', 50000)
+
+RETURN ELEMENT(document, 'div.styles__StyledCard-sc-3jvmda-0.LSTlO')
+
+FOR product IN ELEMENTS(document, 'div.styles__StyledCard-sc-3jvmda-0.LSTlO')
+    LET product_name = ELEMENT(product, 'p.CardName__CardNameStyles-sc-147zxke-0.bWeSzf.prod__name')
+    RETURN {
+        product_name: product_name.innerText,
+    }
